@@ -1,30 +1,25 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, SafeAreaView } from "react-native";
-// import Contador from './src/contador'
+
 
 const App = () => {
 
   const [count, setCount] = useState(0)
   const onPressMais = () => setCount(prevCount => prevCount + 1)
   const onPressMenos = () => setCount(prevCount => prevCount - 1)
-  // const onPressMaisMais = () => setInterval(() => setCount(prevCount => prevCount + 1), 100)
-  // const onPressMenosMenos = () =>  setInterval(() => setCount(prevCount => prevCount - 1), 1000)
+
 
 
   function startIntervalMais() {
     timer = setInterval(() => setCount(prevCount => prevCount + 1), 100)
   }
 
-  function stopIntervalMais() {
+  function stopInterval() {
     clearInterval(timer)
   }
  
   function startIntervalMenos() {
     timer = setInterval(() => setCount(prevCount => prevCount - 1), 100)
-  }
-
-  function stopIntervalMenos() {
-    clearInterval(timer)
   }
 
   return (
@@ -36,7 +31,7 @@ const App = () => {
         style={styles.button}
         onPress={onPressMais}
         onLongPress={startIntervalMais}
-        onPressOut={stopIntervalMais}
+        onPressOut={stopInterval}
 
       >
         <Text>ADICIONE 1</Text>
@@ -45,7 +40,7 @@ const App = () => {
         style={styles.button}
         onPress={onPressMenos}
         onLongPress={startIntervalMenos}
-        onPressOut={stopIntervalMenos}
+        onPressOut={stopInterval}
       >
         <Text>RETIRE 1</Text>
       </TouchableOpacity>
